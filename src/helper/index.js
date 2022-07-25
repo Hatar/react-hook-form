@@ -1,5 +1,3 @@
-export const formatBody = (string) =>{
-    if (string.length > 25) {
-       return  string = string.substring(0, 40) + "...";
-    }
-}
+export const formatBody = (string) => {
+  return string.length > 25 ? string.substring(0, 40) + "..." : string;
+};

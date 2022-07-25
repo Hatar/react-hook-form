@@ -21,13 +21,16 @@ export const addPost = async (data) => {
 };
 
 export const updateBook = async ({ id, ...data }) => {
-  const response = await fetch(`${process.env.REACT_APP_API_SERVER}/posts/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  const response = await fetch(
+    `${process.env.REACT_APP_API_SERVER}/posts/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
 
   if (!response.ok) {
     throw new Error(response.json().message);
@@ -36,9 +39,12 @@ export const updateBook = async ({ id, ...data }) => {
 };
 
 export const removePost = async (id) => {
-  const response = await fetch(`${process.env.REACT_APP_API_SERVER}/posts/${id}`, {
-    method: "DELETE",
-  });
+  const response = await fetch(
+    `${process.env.REACT_APP_API_SERVER}/posts/${id}`,
+    {
+      method: "DELETE",
+    }
+  );
   if (!response.ok) {
     throw new Error("Something went wrong.");
   }
