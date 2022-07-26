@@ -1,8 +1,9 @@
 import React from "react";
-import PostItem from "./PostItem";
 import { useQuery } from "react-query";
 import { getAllPosts } from "../../api";
+import PostItem from "./PostItem";
 function PostList() {
+  
   const { data, isLoading } = useQuery("posts", getAllPosts);
 
   if (isLoading) {
@@ -22,11 +23,11 @@ function PostList() {
         </thead>
         <tbody>
           {data.length > 0 ? (
-            data.map(({ id, userId, title, body }) => (
+            data.map(({ id, userid, title, body }) => (
               <PostItem
                 key={id}
                 id={id}
-                userId={userId}
+                userid={userid}
                 title={title}
                 body={body}
               />

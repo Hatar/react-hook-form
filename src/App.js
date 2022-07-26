@@ -5,7 +5,7 @@ import useForm from "react-hook-form";
 import Modal from "./components/Modal";
 import ReactModal from "react-modal";
 import { addPost, getAllPosts } from "./api";
-import { useMutation } from "react-query";
+import { useMutation,useQueryClient } from "react-query";
 import "./App.css";
 ReactModal.setAppElement("*");
 
@@ -19,25 +19,31 @@ const errorMessage = (error) => {
 };
 
 function App() {
+  const queryClient = useQueryClient()
   const [openModal, setOpenModal] = useState(false);
 
   const { mutateAsync } = useMutation(addPost);
 
-  const { register, errors, handleSubmit } = useForm();
+  const { register, errors, handleSubmit,reset } = useForm();
   const onSubmit = async (data) => {
     await mutateAsync(data, {
       onSuccess: () => {
         setOpenModal(false);
-        getAllPosts();
+        queryClient.invalidateQueries("posts");
       },
     });
   };
+
+  const showModal = () =>{
+    setOpenModal(true)
+    reset()
+  } 
 
   return (
     <div className="container mt-5">
       <button
         className="btn btn-sm btn-primary float-end mb-3"
-        onClick={() => setOpenModal(true)}
+        onClick={() => showModal()}
       >
         Add Post
       </button>

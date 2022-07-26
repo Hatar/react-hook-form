@@ -6,6 +6,7 @@ export const getAllPosts = async () => {
   return response.json();
 };
 
+
 export const addPost = async (data) => {
   const response = await fetch(`${process.env.REACT_APP_API_SERVER}/posts`, {
     method: "POST",
@@ -20,7 +21,9 @@ export const addPost = async (data) => {
   return response.json();
 };
 
-export const updateBook = async ({ id, ...data }) => {
+export const updatePost = async ({ id, ...data }) => {
+  console.log("id",id)
+  console.log("data updated",data)
   const response = await fetch(
     `${process.env.REACT_APP_API_SERVER}/posts/${id}`,
     {
