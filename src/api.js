@@ -22,8 +22,6 @@ export const addPost = async (data) => {
 };
 
 export const updatePost = async ({ id, ...data }) => {
-  console.log("id",id)
-  console.log("data updated",data)
   const response = await fetch(
     `${process.env.REACT_APP_API_SERVER}/posts/${id}`,
     {

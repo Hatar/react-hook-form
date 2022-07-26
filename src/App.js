@@ -4,7 +4,7 @@ import PostList from "./components/PostLIst/PostList";
 import useForm from "react-hook-form";
 import Modal from "./components/Modal";
 import ReactModal from "react-modal";
-import { addPost, getAllPosts } from "./api";
+import { addPost } from "./api";
 import { useMutation,useQueryClient } from "react-query";
 import "./App.css";
 ReactModal.setAppElement("*");
